@@ -1,8 +1,9 @@
 from pyrogram import Client, filters
+import os
 
 # Replace 'API_ID' and 'API_HASH' with your actual values
 bot_token = os.environ.get("bot_token")
-api_id = os.environ.get("api_id")
+api_id = int(os.environ.get("api_id"))
 api_hash = os.environ.get("api_hash")
 
 # Create the Pyrogram client
