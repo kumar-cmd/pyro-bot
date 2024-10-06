@@ -30,23 +30,23 @@ def create_graphics(logo_path, quote, footer_text):
     logo = logo.resize((logo_width, logo_height), Image.Resampling.LANCZOS)
 
     # Create a font for the quote and footer
-    quote_font = ImageFont.truetype("/usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf", 40)
-    footer_font = ImageFont.truetype("/usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf", 32)
+    quote_font = ImageFont.truetype("NotoSansDevanagari-Regular.ttf", 40)
+    footer_font = ImageFont.truetype("NotoSansDevanagari-Regular.ttf", 32)
 
     # Wrap the quote text using textwrap
     wrapped_quote = textwrap.fill(quote, width=40)  # Wrap text to 40 characters width
     wrapped_quote_lines = wrapped_quote.split('\n')
 
-    print(wrapped_quote, wrapped_quote_lines)
+    # print(wrapped_quote, wrapped_quote_lines)
 
     # Calculate the total height required for the wrapped quote
     quote_height = sum([ImageDraw.Draw(Image.new("RGB", (1, 1))).textbbox((0,0), line, font=quote_font)[3] for line in wrapped_quote_lines])
-    print(quote_height)
+    # print(quote_height)
 
     # Set the base height and increase it based on the quote height
     base_height = logo_height + 100  # Base height to accommodate logo and some padding
     graphics_height = base_height + quote_height + 220  # Extra space for the quote
-    print(graphics_height, base_height, quote_height)
+    # print(graphics_height, base_height, quote_height)
     # Create a new image for the graphics
     graphics_width = 800  # Set a fixed width for the graphics
     graphics = Image.new("RGBA", (graphics_width, graphics_height), (255, 255, 255, 255))
