@@ -157,8 +157,9 @@ async def members_invited(client, message):
     await message.chat.send_message(f"{inviter} invited: {', '.join(invited_members)} to the video chat.")
    
 
+app.run()
+
+# if __name__ == "__main__":
+#     port = int(os.environ.get("PORT", 5000))  # Use the PORT environment variable
+#     app.run(port=port)
     
-if __name__ == "__main__":
-    # port = int(os.environ.get("PORT", 5000))  # Use the PORT environment variable
-    # app.run(port=port)
-    app.run()
