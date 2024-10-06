@@ -4,4 +4,3 @@ pillow
 seaborn
 matplotlib
 aiohttp
-flask
