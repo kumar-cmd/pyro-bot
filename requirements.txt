@@ -4,3 +4,4 @@ Pillow
 seaborn
 matplotlib
 aiohttp
+Flask==2.0.2
