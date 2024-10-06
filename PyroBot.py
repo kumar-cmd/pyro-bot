@@ -158,4 +158,6 @@ async def members_invited(client, message):
    
 
     
-app.run()
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))  # Use the PORT environment variable
+    app.run(port=port)
