@@ -13,4 +13,9 @@ app = Client("pyrobot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 def start(client, message):
     message.reply("Hello! I'm your bot.")
 
+# An echo handler that sends back the same message received
+@app.on_message(filters.text)
+async def echo(client, message):
+    await message.reply_text(message.text)
+    
 app.run()
