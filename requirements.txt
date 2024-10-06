@@ -1,2 +1,6 @@
 pyrogram
 tgcrypto
+Pillow
+seaborn
+matplotlib
+aiohttp
