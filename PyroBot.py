@@ -95,7 +95,7 @@ api_id = int(os.environ.get("api_id"))
 api_hash = os.environ.get("api_hash")
 
 # Create the Pyrogram client
-bot = Client("pyrobot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
+bot = Client("pyrobot1", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
 colors = sns.color_palette('deep', 10)  # You can choose any other palette as well
 
@@ -132,7 +132,7 @@ async def generate_image(client, message):
 
 
 # # An echo handler that sends back the same message received
-# @app.on_message(filters.text)
+# @bot.on_message(filters.text)
 # async def echo(client, message):
 #     await message.reply_text(message.text)
 
@@ -162,20 +162,20 @@ async def members_invited(client, message):
     await message.reply_text(f"Hello, sending invited info")
     await message.chat.send_message(f"{inviter} invited: {', '.join(invited_members)} to the video chat.")
 
-async def start_bot():
-    async with bot:
-        await bot.idle()  # Keep the bot running
+# async def start_bot():
+#     async with bot:
+#         await bot.idle()  # Keep the bot running
 
-if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
+# if __name__ == "__main__":
+#     loop = asyncio.get_event_loop()
     
-    # Start the bot in a separate task
-    loop.create_task(start_bot())
+#     # Start the bot in a separate task
+#     loop.create_task(start_bot())
     
-    # # Run the Flask app on port 10000
-    # app.run(host="0.0.0.0", port=10000)
+#     # # Run the Flask app on port 10000
+#     # app.run(host="0.0.0.0", port=10000)
 
-# app.run()
+bot.run()
 
 # if __name__ == "__main__":
 #     bot.start()  # Start the bot
