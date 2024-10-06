@@ -6,8 +6,13 @@ import random
 from io import BytesIO
 import os
 import asyncio
+from flask import Flask
 
+app = Flask(__name__)
 
+@app.route("/")
+def index():
+    return "Bot is running"
 
 
 colors = sns.color_palette('dark', 10)  # You can choose any other palette as well
@@ -89,7 +94,7 @@ api_id = int(os.environ.get("api_id"))
 api_hash = os.environ.get("api_hash")
 
 # Create the Pyrogram client
-app = Client("pyrobot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
+bot = Client("pyrobot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
 colors = sns.color_palette('deep', 10)  # You can choose any other palette as well
 
@@ -99,12 +104,12 @@ def select_random_color():
 
 
 # A simple command to start the bot and greet the user
-@app.on_message(filters.command("start"))
+@bot.on_message(filters.command("start"))
 async def start(client, message):
     await message.reply_text(f"Hello, {message.from_user.first_name}! I'm your bot.")
 
 
-@app.on_message(filters.command("p"))
+@bot.on_message(filters.command("p"))
 async def generate_image(client, message):
     # Get the input text from the message
     txt = message.text.split(' ', 1)[1] # Extract text after the command
@@ -131,20 +136,20 @@ async def generate_image(client, message):
 #     await message.reply_text(message.text)
 
 # Handler to detect when a voice chat starts
-@app.on_message(filters.video_chat_started)
+@bot.on_message(filters.video_chat_started)
 async def on_voice_chat_started(client, message):
     chat_id = message.chat.id
     await message.reply(f"Voice chat started in {message.chat.title}!")
     # print(f"Voice chat started in {message.chat.title} (ID: {chat_id})")
 
 # Handler to detect when a voice chat ends
-@app.on_message(filters.video_chat_ended)
+@bot.on_message(filters.video_chat_ended)
 async def on_voice_chat_ended(client, message):
     chat_id = message.chat.id
     await message.reply(f"Voice chat ended in {message.chat.title}.")
     # print(f"Voice chat ended in {message.chat.title} (ID: {chat_id})")
 
-@app.on_message(filters.video_chat_members_invited)
+@bot.on_message(filters.video_chat_members_invited)
 async def members_invited(client, message):
     chat_id = message.chat.id
     inviter = message.from_user.first_name if message.from_user else "Unknown"
@@ -157,7 +162,11 @@ async def members_invited(client, message):
     await message.chat.send_message(f"{inviter} invited: {', '.join(invited_members)} to the video chat.")
    
 
-app.run()
+# app.run()
+
+if __name__ == "__main__":
+    bot.start()  # Start the bot
+    app.run(host="0.0.0.0", port=10000)  # Run the Flask app on port 10000
 
 # if __name__ == "__main__":
 #     port = int(os.environ.get("PORT", 5000))  # Use the PORT environment variable
