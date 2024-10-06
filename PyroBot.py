@@ -6,14 +6,14 @@ import random
 from io import BytesIO
 import os
 import asyncio
-from flask import Flask
+# from flask import Flask
 
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
-@app.route("/")
-def index():
-    return "Bot is running"
+# @app.route("/")
+# def index():
+#     return "Bot is running"
 
 
 colors = sns.color_palette('dark', 10)  # You can choose any other palette as well
@@ -172,8 +172,8 @@ if __name__ == "__main__":
     # Start the bot in a separate task
     loop.create_task(start_bot())
     
-    # Run the Flask app on port 10000
-    app.run(host="0.0.0.0", port=10000)
+    # # Run the Flask app on port 10000
+    # app.run(host="0.0.0.0", port=10000)
 
 # app.run()
 
