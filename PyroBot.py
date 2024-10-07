@@ -88,7 +88,7 @@ api_id = int(os.environ.get("api_id"))
 api_hash = os.environ.get("api_hash")
 
 # Create the Pyrogram client
-bot = Client("pyrobot1", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
+bot = Client("pyrobot2", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
 colors = sns.color_palette('deep', 10)  # You can choose any other palette as well
 
