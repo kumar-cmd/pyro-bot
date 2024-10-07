@@ -156,14 +156,14 @@ async def members_invited(client, message):
     await message.chat.send_message(f"{inviter} invited: {', '.join(invited_members)} to the video chat.")
 
 
+bot.run()
 
+# async def main():
+#     async with bot:
+#         await bot.start()
+#         await bot.idle()  # Keeps the bot running
 
-async def main():
-    async with bot:
-        await bot.start()
-        await bot.idle()  # Keeps the bot running
-
-if __name__ == "__main__":
-    asyncio.run(main())
+# if __name__ == "__main__":
+#     asyncio.run(main())
 
 
