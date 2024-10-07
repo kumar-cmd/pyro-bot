@@ -6,14 +6,7 @@ import random
 from io import BytesIO
 import os
 import asyncio
-# from flask import Flask
 
-
-# app = Flask(__name__)
-
-# @app.route("/")
-# def index():
-#     return "Bot is running"
 
 
 colors = sns.color_palette('dark', 10)  # You can choose any other palette as well
@@ -163,7 +156,7 @@ async def members_invited(client, message):
     await message.chat.send_message(f"{inviter} invited: {', '.join(invited_members)} to the video chat.")
 
 
-# bot.run()
+
 
 async def main():
     async with bot:
@@ -174,26 +167,3 @@ if __name__ == "__main__":
     asyncio.run(main())
 
 
-# async def start_bot():
-#     async with bot:
-#         await bot.idle()  # Keep the bot running
-
-# if __name__ == "__main__":
-#     loop = asyncio.get_event_loop()
-    
-#     # Start the bot in a separate task
-#     loop.create_task(start_bot())
-    
-#     # # Run the Flask app on port 10000
-#     # app.run(host="0.0.0.0", port=10000)
-
-
-
-# if __name__ == "__main__":
-#     bot.start()  # Start the bot
-#     app.run()  # Run the Flask app on port 10000
-
-# if __name__ == "__main__":
-#     port = int(os.environ.get("PORT", 5000))  # Use the PORT environment variable
-#     app.run(port=port)
-    
